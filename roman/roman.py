@@ -35,19 +35,19 @@ def _contains_replacable(numeral_string):
                       non_power+power_10+non_power]
         for reducible in reducibles:
             if reducible in numeral_string:
-                raise ValueError(f"""{numeral_string} is not a correctly
-                                 formated roman numeral (it contains
-                                 {reducible} as a substring, which is
-                                 reducible)""")
+                raise ValueError(f"""{numeral_string} is not a correctly \
+formated roman numeral (it contains {reducible} \
+as a substring, which is reducible)""")
 
 
 def _check_all_characters_legal(numeral_string):
-    """Raise ValueError if numeral_string contains character not in MDCLXVI."""
-    illegal_chars = set(numeral_string) - set(_ROMAN_POWERS_TEN +
-                                              _ROMAN_MID_POWERS)
+    """
+    Raises a ValueError if numeral_string contains a character not in MDCLXVI
+    """
+    illegal_chars = set(numeral_string) - set(_ROMAN_POWERS_TEN + _ROMAN_MID_POWERS)
     if len(illegal_chars):
-        raise ValueError(f"""{numeral_string} contains {illegal_chars}, which
-                         are not allowed in Roman numerals""")
+        raise ValueError(f"""{numeral_string} contains {illegal_chars}, \
+which are not allowed in Roman numerals""")
 
 
 def _check_for_illegal_combos(numeral_string):
@@ -64,9 +64,9 @@ def _check_for_illegal_combos(numeral_string):
 
     for illegal_substring in illegal_substrings:
         if illegal_substring in numeral_string:
-            raise ValueError(f"""{numeral_string} is not a valid Roman numeral,
-                             it contains the illegal substring
-                             {illegal_substring}""")
+            raise ValueError(
+                f"""{numeral_string} is not a valid Roman numeral,\
+it contains the illegal substring {illegal_substring}""")
     for exception_substring in exception_substrings:
         numeral_string = numeral_string.replace(exception_substring,
                                                 exception_substring[-1])
@@ -74,8 +74,8 @@ def _check_for_illegal_combos(numeral_string):
         curr_index = _ROMAN_ALL_SYMBOLS.index(current_char)
         next_index = _ROMAN_ALL_SYMBOLS.index(next_char)
         if (curr_index > next_index):
-            raise ValueError(f"""String contains an illegal combination of
-                             characters""")
+            raise ValueError("""String contains an illegal combination of \
+characters""")
 
 
 def _validate_string(numeral_string):
@@ -156,7 +156,7 @@ def int_to_roman_string(number):
     number = int(number)
     if number < 0:
         raise ValueError(f"""{number} is negative, cannot convert to Roman
-                         numeral""")
+numeral""")
     result = ''
     for symbol, value in _ROMAN_SYMBOLS:
         result += (number//value) * symbol
