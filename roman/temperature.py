@@ -71,9 +71,9 @@ def convert_all(temp, unit, allow_neg_abs=False):
     values = {new_unit: _CONVERSIONS[(unit, new_unit)](temp) for new_unit in
               UNITS}
     if (not allow_neg_abs) and values['K'] < 0:
-        raise ValueError("""{temp} {unit} is a negative temperature on the \
-                         Kelvin scale ({values['K']} K). If you want to do \
-                         this conversion, set allow_neg_abs to True""")
+        raise ValueError(f"""{temp} {unit} is a negative temperature on the \
+Kelvin scale ({values['K']} K). If you want to do \
+this conversion, set allow_neg_abs to True""")
     return values
 
 
